@@ -1,3 +1,9 @@
+# More better way, ignore all
+# except for *.* files and dirs
+*
+!*.*
+!*/
+
 # Prerequisites
 *.d
 
@@ -33,3 +39,7 @@
 
 # vscode
 .vscode
+
+# CF extension
+.cph
+
