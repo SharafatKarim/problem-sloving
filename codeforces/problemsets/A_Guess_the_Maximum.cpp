@@ -17,10 +17,21 @@ typedef vector<vl> vvl;
 void test() {
     ll n;
     cin >> n;
-    vl a(n);
-    for(auto &i: a) cin >> i;
+    vl a, main(n);
+    for (auto &i: main) cin >> i;
+    for (ll i=0; i<n; i++) {
+        if (i > 0 && main[i-1] < main[i]) {   
+            a[i-1] = main[i];
+            a.push_back(main[i]); 
+        } else if (i > 0) {
+            a.push_back(a[i-1]); 
+        } else {
+            a.push_back(main[i]);
+        }
+    }
+    // for(auto &i: a) cin >> i;
     sort(a.begin(), a.end());
-    cout << a[n-1] - 1 << endl;
+    cout << a[0] - 1 << endl;
 }
 
 int main()
