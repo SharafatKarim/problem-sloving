@@ -19,17 +19,20 @@ void test() {
     cin >> n;
     vl a, main(n);
     for (auto &i: main) cin >> i;
-    for (ll i=0; i<n; i++) {
-        if (i > 0 && main[i-1] < main[i]) {   
-            a[i-1] = main[i];
-            a.push_back(main[i]); 
-        } else if (i > 0) {
-            a.push_back(a[i-1]); 
-        } else {
-            a.push_back(main[i]);
-        }
+    // for (ll i=0; i<n; i++) {
+    //     if (i > 0 && main[i-1] < main[i]) {   
+    //         a[i-1] = main[i];
+    //         a.push_back(main[i]); 
+    //     } else if (i > 0) {
+    //         a.push_back(a[i-1]); 
+    //     } else {
+    //         a.push_back(main[i]);
+    //     }
+    // }
+    if (n==1) {cout << main[0] - 1 << endl; return;}
+    for (ll i=0; i < n-1; i++) {
+        a.push_back(max(main[i], main[i+1]));
     }
-    // for(auto &i: a) cin >> i;
     sort(a.begin(), a.end());
     cout << a[0] - 1 << endl;
 }
@@ -44,6 +47,7 @@ int main()
     cin >> t;
     while (t--) test();
 
+    // cout << "the end\n";
     // Code ends here
     return 0;
 }
