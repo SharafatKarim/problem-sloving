@@ -14,28 +14,28 @@ typedef vector<vl> vvl;
 
 #define endl '\n'
 
+ll mini(ll a, ll b, ll c) {
+    return min(a, min(b, c));
+}
+
 void test() {
-    ll n, m, k;
-    cin >> n >> m >> k;
-    ll ar1[n], ar2[m], ar3[m];
-    for (ll i=0; i<n; i++) cin >> ar1[i];
-    sort(ar1, ar1+n);
-    for (ll i=0; i<m; i++) {cin >> ar2[i];}
-    sort(ar2, ar2+m);
-    for (ll i=0; i<m; i++) {
-        if (i==0) ar3[i] = ar2[i];
-        else ar3[i] = ar3[i-1] + ar2[i];
+    ll n;
+    cin >> n;
+    vl ar(n);
+    for (auto &i: ar) cin >> i;
+    for (ll i=1; i<n-1; i++) {
+        ll min = mini(ar[i-1], ar[i], ar[i+1]);
+        if (min == 0) continue;
+        ar[i-1] -= min;
+        ar[i] -= min*2;
+        ar[i+1] -= min;
+        // if (i > 1 && ar[i-2] > 0) break;
     }
     ll count = 0;
-    for (ll i=0; i < n; i++) {
-        for (ll j=m-1; j>=0; j--) {
-            if (ar1[i] + ar3[j] <= k) {
-                count += j+1;
-                break;
-            }
-        }
+    for (auto i: ar) {
+        if (i != 0) {cout << "NO" << endl; return;}
     }
-    cout << count << endl;
+    cout << "YES" << endl;
 }
 
 int main()
