@@ -17,28 +17,24 @@ typedef vector<vl> vvl;
 void test() {
     ll n;
     cin >> n;
-    vl ar(n);
+    vl arx(n);
+    vl ary(n);
 
-    ll first = 0;
-    ll second = 0;
-
-    ll n1 = n;
-    while (n--) {
-        cin >> ar[n1-n];
+    for (ll i=0; i < n; i++) {
+        cin >> arx[i];
+    }
+    for (ll i=0; i < n; i++) {
+        cin >> ary[i];
     }
 
-    sort(ar.begin(), ar.end());
-
-    n = n1;
-    while (n1--) {
-        if (first < second) {
-            first += ar[n-n1];
-        } else {
-            second += ar[n-n1];
+    ll max_v = 0;
+    for (ll i=0; i < n; i++) {
+        for (ll j=i+1; j < n; j++) {
+            max_v = max(max_v, ((arx[i]-arx[j])*(arx[i]-arx[j])) + ((ary[i]-ary[j])*(ary[i]-ary[j])) );
         }
     }
 
-    cout << abs(first - second) << endl;
+    cout << max_v << endl;
 }
 
 int main()
