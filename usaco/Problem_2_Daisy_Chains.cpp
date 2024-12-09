@@ -16,20 +16,19 @@ void Test(ll t) {
     vl ar(N);
     map<ll, bool> exist;
     vl sum(N);
-    sum[0] = 0
 
-    ll sum = 0;
     for (ll i=0; i<N; i++) {
       cin >> ar[i]; 
       exist[ar[i]] = true;
+      if (i==0) sum[0] = ar[i];
+      else sum[i] = sum[i-1] + ar[i];
     }
 
     for (ll i=0; i<N; i++) {
       for (ll i=0; i<N; i++) {
-
+        cout << i << " " << j << endl;
       }
     }
-    cout << sum << endl;
 }
 
 int main()
