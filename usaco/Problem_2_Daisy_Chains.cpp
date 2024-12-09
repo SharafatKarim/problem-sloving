@@ -24,11 +24,21 @@ void Test(ll t) {
       else sum[i] = sum[i-1] + ar[i];
     }
 
+    ll ans = 0;
     for (ll i=0; i<N; i++) {
-      for (ll i=0; i<N; i++) {
+      for (ll j=i; j<N; j++) {
         cout << i << " " << j << endl;
+        if (i == j) {
+          ans += i;
+        } else {
+          if (exist[sum[j]-sum[i]]) {
+            ans += (sum[j]-sum[i]) / (j-i+1);
+          }
+        }
       }
     }
+
+    cout << ans << endl;
 }
 
 int main()
