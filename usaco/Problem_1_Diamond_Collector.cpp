@@ -16,14 +16,18 @@ void Test(ll t) {
     vl A(N);
     for (ll i=0; i<N; i++) cin >> A[i];
 
+    if (N == 1) {
+      cout << 1 << endl;
+      return;
+    }
+
+    sort(all(A));
+
     ll sum = 0;
-    for (ll i=0; i<N; i++) {
-      for (ll j=i+1; j<N; j++) {
-        cout << A[i] << " " << A[j] << " diff " << abs(A[i]-A[j]) << endl;
-        if (abs(A[i] - A[j]) == K) {
-          sum++;
-        }
-      }
+    ll j = 1;
+    for (ll i=0; i< N-1; i++) {
+      while (j < N && A[j] - A[i] <= K) j++;
+      sum = max(sum, j-i);
     }
 
     cout << sum << endl;
@@ -33,8 +37,8 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    // freopen("pails.in", "r", stdin);
-	  // freopen("pails.out", "w", stdout);
+    freopen("diamond.in", "r", stdin);
+	  freopen("diamond.out", "w", stdout);
 
     // Code starts here
 
