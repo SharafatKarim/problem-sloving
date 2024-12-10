@@ -14,7 +14,7 @@ void Test(ll t) {
     ll N;
     cin >> N;
     vl ar(N);
-    map<ll, bool> exist;
+    map<double, bool> exist;
     vl sum(N);
 
     for (ll i=0; i<N; i++) {
@@ -27,17 +27,14 @@ void Test(ll t) {
     ll ans = 0;
     for (ll i=0; i<N; i++) {
       for (ll j=i; j<N; j++) {
-        cout << i << " " << j << endl;
-        if (i == j) {
-          ans += i;
-        } else {
-          ll temp = 0;
-          if (i == 0) temp = sum[j];
-          else temp = sum[j]-sum[i-1];
-          ll cond = temp / (j-i+1);
-          if (exist[cond]) {
-            ans += (sum[j]-sum[i]) / (j-i+1);
-          }
+        ll temp = 0;
+        if (i == 0) temp = sum[j];
+        else temp = sum[j]-sum[i-1];
+        
+        double cond = (double) temp / (j-i+1);
+        // cout <<  " -> " << temp << " - " << cond  << " -> " << exist[cond] << endl;
+        if (exist[cond]) {
+          ans++;
         }
       }
     }
