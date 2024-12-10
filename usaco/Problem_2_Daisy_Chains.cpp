@@ -31,7 +31,11 @@ void Test(ll t) {
         if (i == j) {
           ans += i;
         } else {
-          if (exist[sum[j]-sum[i]]) {
+          ll temp = 0;
+          if (i == 0) temp = sum[j];
+          else temp = sum[j]-sum[i-1];
+          ll cond = temp / (j-i+1);
+          if (exist[cond]) {
             ans += (sum[j]-sum[i]) / (j-i+1);
           }
         }
