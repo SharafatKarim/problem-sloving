@@ -18,7 +18,7 @@ void test() {
     ll n, m;
     cin >> n >> m;
 
-    cout << (m+1) << endl;
+    cout << (max(m, n)+1) << endl;
 }
 
 int main()
