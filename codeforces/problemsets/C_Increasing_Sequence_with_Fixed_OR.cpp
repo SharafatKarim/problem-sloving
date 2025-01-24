@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Simple template by sharafat 
+// copyright MH Nazmul
 typedef long long ll;
 typedef vector<ll> vl;
 
@@ -11,13 +11,41 @@ typedef vector<ll> vl;
 #define endl '\n'
 
 void Test(ll t) {
-    ll n;
+    ll n, count = 0;
     cin >> n;
 
     vl bin;
+    vl ans;
+
     for (ll i=0; i<60; i++) {
-      bin.push_back( n |  );
+      if ((n & (1ll << i)) > 0) {
+        ans.push_back(n- (1ll << i));
+        bin.push_back(1);
+        count++;
+      } else {
+        bin.push_back(0);
+      }
     }
+      
+    // for (ll i = bin.size() -1; i >= 0; i--) {
+    //   cout << bin[i];
+    // } cout << endl;
+
+    if (count > 1 ) {
+      count++;
+    }
+
+    cout << count << "\n" ;
+    sort(all(ans));
+
+    if (count > 1) {
+      for (ll i=0; i<ans.size(); i++) {
+        cout << ans[i] << " ";
+      }
+    }
+    cout << n;
+    cout << endl;
+    
 }
 
 int main()
