@@ -18,12 +18,18 @@ void Test(ll t) {
         for (char i: s) {
             if ('A' <= i && i <= 'Z')
                 i += 32;
-            else if (!('a' <= i && i <= 'z') )
+            else if (!('a' <= i && i <= 'z') ) {
+                if (!temp.empty()) {
+                    st.insert(temp);
+                    temp = "";
+                }
                 continue;
+            }
             // cout << i;
             temp += i;
         }
-        st.insert(temp);
+        if (!temp.empty()) 
+            st.insert(temp);
         temp = "";
         // cout << endl;
     }
