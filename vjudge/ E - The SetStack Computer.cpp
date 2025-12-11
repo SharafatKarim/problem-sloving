@@ -18,9 +18,15 @@ void Test(ll t) {
         cin >> temp;
         if (temp == "ADD") {
             cnt++;
+            cout << cnt << endl;
         } else if (temp == "PUSH") {
-            cnt++;
+            cnt = 0;
+            cout << cnt << endl;
+        } else if (temp == "INTERSECT") {
+            if (cnt == 2) cnt = 1;
+            cout << cnt << endl;
         } else {
+            cout << cnt << endl;
             continue;
         }
     }
