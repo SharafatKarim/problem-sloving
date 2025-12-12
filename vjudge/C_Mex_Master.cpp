@@ -15,12 +15,13 @@ void Test(ll t) {
     cin >> n;
     vl ar(n);
 
-    ll cnt_zero = 0;
+    ll cnt_zero = 0, cnt_nonzero = 0;
     for (ll i=0; i<n; i++) {
         cin >> ar[i];
         if (ar[i] == 0) cnt_zero++;
+        else cnt_nonzero++;
     }
-    if (cnt_zero % 2 == 0) cout << 0 << endl;
+    if (cnt_zero <= cnt_nonzero + 1) cout << 0 << endl;
     else  cout << 1 << endl;
 }
 // 1 0 0 0 2 0 3 0
