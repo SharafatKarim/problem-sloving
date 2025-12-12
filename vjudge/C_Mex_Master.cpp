@@ -14,18 +14,25 @@ void Test(ll t) {
     ll n;
     cin >> n;
     vl ar(n);
+    // set<ll> st;
 
-    ll cnt_zero = 0, cnt_nonzero = 0;
+    ll cnt_zero = 0, cnt_nonzero = 0, cnt_one = 0;
     for (ll i=0; i<n; i++) {
         cin >> ar[i];
+        // st.insert(ar[i]);
         if (ar[i] == 0) cnt_zero++;
         else cnt_nonzero++;
+        if (ar[i] == 1) cnt_one++;
     }
     if (cnt_zero <= cnt_nonzero + 1) cout << 0 << endl;
-    else  cout << 1 << endl;
+    else {
+        if (cnt_nonzero == cnt_one && cnt_nonzero != 0) 
+            cout << 2 << endl;
+        else
+            cout << 1 << endl;
+    }
 }
-// 1 0 0 0 2 0 3 0
-// 1 0 2 0 3 00
+
 int main()
 {
     ios_base::sync_with_stdio(false);
