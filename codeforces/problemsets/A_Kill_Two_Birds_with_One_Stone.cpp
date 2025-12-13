@@ -17,6 +17,10 @@ void Test(ll t) {
         cout << "NO" << endl;
         return;
     }
+    if ( (abs(r2-r1) % 2 == 0 ) && ( abs(c2-c1) % 2 == 0 ) ) {
+        cout << "NO" << endl;
+        return;
+    }
     if ( (abs(r2-r1) % 2 == 0 ) || ( abs(c2-c1) % 2 == 0 ) ) {
         cout << "YES" << endl;
     } else {
