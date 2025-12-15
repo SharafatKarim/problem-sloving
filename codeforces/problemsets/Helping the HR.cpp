@@ -49,27 +49,38 @@ void solve(ll n) {
         ll diff = (h2 * 3600 + m2 * 60 + s2) - (h1 * 3600 + m1 * 60 + s1);
 
         if (d == 'D') {
-            if (h1 < 9 || (h1 == 9 && m1 < 30)) isLate = true;
+            if (h1 > 9 || (h1 == 9 && m1 > 30) || (h1 == 9 && m1 == 30 && s1 > 0)) isLate = true;
             if (diff < 28800) notEnough = true;
         } else {
-            if (h1 < 12 || (h1 == 12 && m1 < 30)) isLate = true;
+            if (h1 > 12 || (h1 == 12 && m1 > 30) || (h2 == 9 && m2 == 30 && s2 > 0)) isLate = true;
             if (diff < 32400) notEnough = true;
         }
 
         if (isLate || notEnough) count++;
-        cout << d << isLate << notEnough << endl;
+        // cout << d << isLate << notEnough << endl;
     }
-    cout << count << endl;
+    // cout << count << endl;
+    if (count == 0) 
+        cout << "All OK" << endl;
+    else if (count == 1) 
+        cout << "1 Point(s) Deducted" << endl;
+    else if (count == 2) 
+        cout << "2 Point(s) Deducted" << endl;
+    else if (count == 3) 
+        cout << "3 Point(s) Deducted" << endl;
+        else
+        cout << "Issue Show Cause Letter" << endl;
 }
 
 void Test(ll t) {
     while (true) {
         ll n;
         cin >> n;
-        solve(n);
         if (n == 0) {
             break;
+            exit;
         }
+        solve(n);
     }
 }
 
