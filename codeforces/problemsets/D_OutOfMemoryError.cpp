@@ -26,7 +26,8 @@ void Test(ll t) {
         temp[b-1] += c;
         
         if (temp[b-1] > h) {
-            temp.assign(ar.begin(), ar.end());
+            // temp.assign(ar.begin(), ar.end());
+            temp[b-1] = ar[b];
         }
     }
     

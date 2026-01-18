@@ -14,7 +14,7 @@ void Test(ll t) {
     ll n, m, k;
     cin >> n >> m >> k;
     vl robo(n);
-    map<ll, bool> spike;
+    map<ll, bool> spike, dead;
     for (ll i=0; i<n; i++) {
         cin >> robo[i];
     }
@@ -25,6 +25,30 @@ void Test(ll t) {
     }
     string instruct;
     cin >> instruct;
+
+    ll cnt = n;
+    for (auto s: instruct) {
+        ll incre;
+        if (s == 'L') {
+            incre = -1;
+        } else {
+            incre = 1;
+        }
+
+        for (ll i=0; i <n; i++) {
+            if (dead[i]) continue;
+            robo[i] += incre;
+
+            if (spike[robo[i]]) {
+                dead[i] = true;
+                cnt--;
+            }
+        }
+        
+        cout << cnt << " ";
+    }
+
+    cout << endl;
 
     // ll pass = 0;
     // for (ll i=0; i<n; i++) {
